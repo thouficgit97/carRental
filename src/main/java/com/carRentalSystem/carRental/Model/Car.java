@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
+@Table(name = "car") 
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
