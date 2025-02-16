@@ -8,15 +8,30 @@ import org.springframework.stereotype.Component;
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "carId")
     private int carId;
+    @Column(name = "brand")
     private String brand;
+    @Column(name = "model")
+
     private String model;
+    @Column(name = "mile_Age")
+
     private float mileAge;
+    @Column(name = "price_per_day")
+
     private int pricePerDay;
+    @Column(name = "number_plate")
+
     private String numberPlate;
+    @Column(name = "is_available")
+
     private boolean isAvailable;
 
+
     @Enumerated(EnumType.STRING)
+    @Column(name = "fuel_type")
+
     private FuelType fuelType;
 
     public enum FuelType {

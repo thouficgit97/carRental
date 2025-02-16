@@ -10,18 +10,25 @@ import java.time.LocalDateTime;
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "booking_id")
     private int bookingId;
+    @Column(name = "booked_at")
+
     private LocalDateTime bookedAt;
+    @Column(name = "no_ofdays")
+
     private int noOfdays;
+    @Column(name = "total_fare")
     private int totalFare;
+    @Column(name = "booking_status")
     private boolean bookingStatus;
 
     @ManyToOne
-    @JoinColumn(name = "userId")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "carId")
+    @JoinColumn(name = "car_id")
     private Car car;
 
     public Booking() {}
