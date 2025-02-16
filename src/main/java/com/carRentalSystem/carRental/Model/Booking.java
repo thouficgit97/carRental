@@ -7,6 +7,7 @@ import java.time.LocalDateTime;
 
 @Component
 @Entity
+@Table(name = "booking") 
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
