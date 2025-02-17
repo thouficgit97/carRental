@@ -1,37 +1,35 @@
 package com.carRentalSystem.carRental.Model;
 
 import jakarta.persistence.*;
-import org.springframework.stereotype.Component;
 
-@Component
 @Entity
+@Table(name = "Car")  // Explicitly define table name (optional but good practice)
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "carId")
+    @Column(name = "car_id")
     private int carId;
+
     @Column(name = "brand")
     private String brand;
+
     @Column(name = "model")
-
     private String model;
-    @Column(name = "mile_Age")
 
-    private float mileAge;
+    @Column(name = "mileage")
+    private float mileage;
+
     @Column(name = "price_per_day")
-
     private int pricePerDay;
+
     @Column(name = "number_plate")
-
     private String numberPlate;
+
     @Column(name = "is_available")
-
-    private boolean isAvailable;
-
+    private Boolean isAvailable;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "fuel_type")
-
     private FuelType fuelType;
 
     public enum FuelType {
@@ -40,18 +38,17 @@ public class Car {
 
     public Car() {}
 
-    public Car(int carId, String brand, String model, float mileAge, int pricePerDay, String numberPlate, boolean isAvailable, FuelType fuelType) {
+    public Car(int carId, String brand, String model, float mileage, int pricePerDay, String numberPlate, Boolean isAvailable, FuelType fuelType) {
         this.carId = carId;
         this.brand = brand;
         this.model = model;
-        this.mileAge = mileAge;
+        this.mileage = mileage;
         this.pricePerDay = pricePerDay;
         this.numberPlate = numberPlate;
         this.isAvailable = isAvailable;
         this.fuelType = fuelType;
     }
 
-    // Getters and Setters
     public int getCarId() {
         return carId;
     }
@@ -76,12 +73,12 @@ public class Car {
         this.model = model;
     }
 
-    public float getMileAge() {
-        return mileAge;
+    public float getMileage() {
+        return mileage;
     }
 
-    public void setMileAge(float mileAge) {
-        this.mileAge = mileAge;
+    public void setMileage(float mileage) {
+        this.mileage = mileage;
     }
 
     public int getPricePerDay() {
@@ -100,12 +97,12 @@ public class Car {
         this.numberPlate = numberPlate;
     }
 
-    public boolean isAvailable() {
+    public Boolean getIsAvailable() {  // Changed method name for proper serialization
         return isAvailable;
     }
 
-    public void setAvailable(boolean available) {
-        isAvailable = available;
+    public void setIsAvailable(Boolean isAvailable) {
+        this.isAvailable = isAvailable;
     }
 
     public FuelType getFuelType() {

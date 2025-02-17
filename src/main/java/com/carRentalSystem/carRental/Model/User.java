@@ -5,7 +5,7 @@ import java.util.List;
 
 @Component
 @Entity
-@Table(name = "users")  // Explicitly map to the correct table name
+@Table(name = "user")
 
 public class User {
     @Id
@@ -15,7 +15,7 @@ public class User {
     @Column(name = "user_name")
 
     private String userName;
-    @Column(name = "pword")
+    @Column(name = "pass_word")
 
     private String password;
     @Column(name = "mob_no")

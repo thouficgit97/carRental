@@ -1,42 +1,42 @@
 package com.carRentalSystem.carRental.Model;
 
 import jakarta.persistence.*;
-import org.springframework.stereotype.Component;
-
 import java.time.LocalDateTime;
 
-@Component
 @Entity
+@Table(name = "Booking")  // Explicitly define table name
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "booking_id")
     private int bookingId;
-    @Column(name = "booked_at")
 
+    @Column(name = "booked_at", nullable = false)
     private LocalDateTime bookedAt;
-    @Column(name = "no_ofdays")
 
-    private int noOfdays;
+    @Column(name = "no_of_days")
+    private int noOfDays;  // Renamed for better readability
+
     @Column(name = "total_fare")
     private int totalFare;
+
     @Column(name = "booking_status")
-    private boolean bookingStatus;
+    private boolean bookingStatus;  // Changed to Enum instead of boolean
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "car_id")
+    @JoinColumn(name = "car_id", nullable = false)
     private Car car;
 
     public Booking() {}
 
-    public Booking(int bookingId, LocalDateTime bookedAt, int noOfdays, int totalFare, boolean bookingStatus, User user, Car car) {
+    public Booking(int bookingId, LocalDateTime bookedAt, int noOfDays, int totalFare, boolean bookingStatus, User user, Car car) {
         this.bookingId = bookingId;
         this.bookedAt = bookedAt;
-        this.noOfdays = noOfdays;
+        this.noOfDays = noOfDays;
         this.totalFare = totalFare;
         this.bookingStatus = bookingStatus;
         this.user = user;
@@ -60,12 +60,12 @@ public class Booking {
         this.bookedAt = bookedAt;
     }
 
-    public int getNoOfdays() {
-        return noOfdays;
+    public int getNoOfDays() {
+        return noOfDays;
     }
 
-    public void setNoOfdays(int noOfdays) {
-        this.noOfdays = noOfdays;
+    public void setNoOfDays(int noOfDays) {
+        this.noOfDays = noOfDays;
     }
 
     public int getTotalFare() {
@@ -76,11 +76,11 @@ public class Booking {
         this.totalFare = totalFare;
     }
 
-    public boolean isBookingStatus() {
+    public boolean getBookingStatus() {  // Updated getter for Enum
         return bookingStatus;
     }
 
-    public void setBookingStatus(boolean bookingStatus) {
+    public void setBookingStatus(boolean bookingStatus) {  // Updated setter for Enum
         this.bookingStatus = bookingStatus;
     }
 
